@@ -22,6 +22,9 @@ module.exports.register = (req, res, next) =>{
             // response object . send function can be call inside the value of doc parameter 
             res.send(doc);
         }
+        else{
+            console.log(err);
+        }
     });
 
 }
