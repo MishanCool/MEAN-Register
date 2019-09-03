@@ -2,11 +2,31 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');//generate the random saltSecret, first require the bcryptjs state ment
 
 var userSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: String,
-  saltSecret: String // automaticaly create user registration function in user.controller.js file
+  username:{
+    type: String,
+    required: 'Full name can\'t be empty'
+  },
+  email: {
+    type: String,
+    required: 'Email can\'t be empty',
+    unique: true
+  },
+  password: {
+    type: String,
+    required: 'Password can\'t be empty',
+    minlength: [4, 'Password must be atleast 4 character long']
+  },
+  saltSecret: { // automaticaly create user registration function in user.controller.js file
+    type: String
+  } 
 }, {timestamps: true});
+
+
+//Custom validation for email
+userSchema.path('email').validate(/*function*/ (val) =>{
+  var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return emailRegex.test(val); // Assuming email has a text attribute
+}, 'Invalied email');
 
 
 //Event
