@@ -10,9 +10,9 @@ module.exports.register = (req, res, next) =>{
     //make an object of following "User" model
     var user = new User();                                   //
                                                              //
-    user.username = req.body.username;   //                  // save new user recodes based on the values pass through the "req" parameter
-    user.email = req.body.email;         //   retrive values //
-    user.password = req.body.email;      //                  //
+    user.username = req.body.username;      //                  // save new user recodes based on the values pass through the "req" parameter
+    user.email = req.body.email;            //   retrive values //
+    user.password = req.body.password;      //                  //
 
     //save user recodes
     user.save((err, doc) => {        // err - posible errors pass through this parameter
