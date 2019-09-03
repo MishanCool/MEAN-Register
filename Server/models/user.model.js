@@ -9,6 +9,7 @@ var userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: 'Email can\'t be empty',
+    index: true,
     unique: true
   },
   password: {
@@ -33,8 +34,8 @@ userSchema.path('email').validate(/*function*/ (val) =>{
 userSchema.pre("save", function(next) {
 
   //Generate a salt and hash on separate function calls
-  bcrypt.genSalt(10, function(err, salt) {                     //Randomly jenarate  result secret code from bcryptjs
-    bcrypt.hash(this.password, salt, function(err, hash) {
+  bcrypt.genSalt(10, /*function*/(err, salt) =>{                     //Randomly jenarate  result secret code from bcryptjs
+    bcrypt.hash(this.password, salt, /*function*/(err, hash) => {
         // Store hash in your password DB.
         this.password = hash; //encripted password inside this hash parameter, save inside the password property in mongo db.
         this.saltSecret = salt;
