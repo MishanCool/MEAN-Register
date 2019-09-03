@@ -22,8 +22,17 @@ module.exports.register = (req, res, next) =>{
             // response object . send function can be call inside the value of doc parameter 
             res.send(doc);
         }
+        //All validation errors shud be handle in else block
         else{
-            console.log(err);
+            //console.log(err);
+            if (err.code === 11000) {
+                // Duplicate email
+                return res.status(422).send(['Duplicate email address found']);
+            }
+            else{
+                return next(err);
+            }
+        
         }
     });
 
