@@ -5,7 +5,7 @@ var userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
-  salt: String // automaticaly create user registration function in user.controller.js file
+  saltSecret: String // automaticaly create user registration function in user.controller.js file
 }, {timestamps: true});
 
 
@@ -14,7 +14,7 @@ userSchema.pre("save", function(next) {
 
   //Generate a salt and hash on separate function calls
   bcrypt.genSalt(10, function(err, salt) {                     //Randomly jenarate  result secret code from bcryptjs
-    bcrypt.hash(this.Password, salt, function(err, hash) {
+    bcrypt.hash(this.password, salt, function(err, hash) {
         // Store hash in your password DB.
         this.password = hash; //encripted password inside this hash parameter, save inside the password property in mongo db.
         this.saltSecret = salt;
