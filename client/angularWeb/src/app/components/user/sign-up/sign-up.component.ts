@@ -10,6 +10,7 @@ import { UserService } from './../../../shared/user.service';
   providers: [UserService]
 })
 export class SignUpComponent implements OnInit {
+  emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
   constructor(private userService: UserService) { }
 
