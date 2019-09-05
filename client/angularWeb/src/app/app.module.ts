@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-//import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 // components imports
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +23,7 @@ import { appRoutes } from './routes';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    //RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
