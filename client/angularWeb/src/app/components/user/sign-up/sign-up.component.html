@@ -1,1 +1,11 @@
-<p>sign-up works!</p>
+<form #signUpForm="ngForm">
+  <input type="text" #username="ngModel" [(ngModel)]="userService.selectedUser.username" name="username" placeholder="User Name">
+
+
+  <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email">
+
+
+  <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password">
+
+  <input type="submit" value="Sign Up">
+</form>
