@@ -1,4 +1,4 @@
-<form #signUpForm="ngForm">
+<form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
   <input type="text" #username="ngModel" [(ngModel)]="userService.selectedUser.username" name="username" placeholder="User Name"
   required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid}">
   <div *ngIf="signUpForm.submitted && !username.valid">
@@ -20,6 +20,7 @@
     <label *ngIf="password.errors.required" class="validation-message">This field is required</label>
     <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters</label>
   </div>
+
 
   <input type="submit" value="Sign Up">
 </form>
