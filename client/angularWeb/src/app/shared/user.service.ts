@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 import { User } from './user.model';
@@ -13,5 +14,12 @@ export class UserService {
     password: ''               //
   };
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  postUser(user: User) {
+    return this.http.post( environment.apiBaseUrl + '/register', user);
+  }
+
 }
