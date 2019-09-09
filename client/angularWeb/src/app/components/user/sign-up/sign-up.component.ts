@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 
 import { UserService } from './../../../shared/user.service';
@@ -15,6 +16,10 @@ export class SignUpComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm) {
+
   }
 
 }
