@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
       res => {
         this.showSucessMessage = true;
         setTimeout(() => this.showSucessMessage = false, 4000);
-        // this.resetForm(form);
+        this.resetForm(form);
       },
 
       err => {
